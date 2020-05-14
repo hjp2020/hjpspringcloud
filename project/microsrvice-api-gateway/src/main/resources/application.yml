@@ -1,10 +1,8 @@
-#服务端口 (本身是一个web项目)
 server:
-  port: 8091
-###起个名字作为服务名称(该服务注册到eureka注册中心的名称，比如商品服务)
+  port: 8087 #服务端口
 spring:
   application:
-    name: app-item
+    name: app-zuul-gateway #指定服务名
 ###服务注册到eureka注册中心的地址
 eureka:
   client:
@@ -18,6 +16,16 @@ eureka:
     prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}###${server.port} #指定实例id
+# 注释掉应用中网关配置，将该配置放到gitee上
+#zuul:
+#  routes: #定义服务转发规则
+#    item-service: #item-service这个名字是任意写的
+#      path: /item-service/** #匹配item-service的请求app-item服务
+#      #url: http://127.0.0.1:8081 #真正的微服务地址
+#      serviceid: app-item
+#    order-service: #名字尽量和业务系统相关
+#      path: /order-service/** #匹配order-service的请求app-order服务
+#      serviceid: app-order
 #开启所有端点
 management:
   endpoints:
