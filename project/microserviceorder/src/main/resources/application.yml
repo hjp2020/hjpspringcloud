@@ -28,3 +28,6 @@ app-item:
 feign:
   hystrix:
     enabled: true
+#配置Swagger接口扫描范围
+swagger:
+  base-package: com.hjp.order
